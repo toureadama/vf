@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulation de Mensualité - SIAH SCI</title>
+    <meta name="description" content="Simulez votre mensualité pour la location-acquisition avec SIAH SCI. Calculez le prix d'achat en fonction de la mensualité, durée et taux d'intérêt.">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#E30613",
+                        secondary: "#000000",
+                        light: "#FFFFFF",
+                        dark: "#1A1A1A"
+                    },
+                    fontFamily: {
+                        sans: ['"Helvetica Neue"', 'Arial', 'sans-serif'],
+                        heading: ['"Helvetica Neue"', 'Arial', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-sans bg-white">
+    <!-- Header -->
+    <header class="bg-white shadow-sm sticky top-0 z-50 border-b border-gray-200">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center">
+                    <a href="index.html" class="flex items-center">
+                        <img src="img/logo.jpg" alt="SIAH SCI" class="h-10 w-auto">
+                    </a>
+                </div>
+
+                <nav class="hidden md:flex space-x-8">
+                    <a href="index.html" class="text-secondary hover:text-primary font-medium">Accueil</a>
+                    <a href="about.html" class="text-secondary hover:text-primary font-medium">À propos</a>
+                    <a href="services.html" class="text-secondary hover:text-primary font-medium">Nos services</a>
+                    <a href="properties.html" class="text-secondary hover:text-primary font-medium">Biens en location</a>
+                    <a href="simulation_mensualite.html" class="text-secondary hover:text-primary font-medium">Simulation Mensualité</a>
+                    <a href="simulation_promoteur.html" class="text-secondary hover:text-primary font-medium">Simulation Promoteur</a>
+                    <a href="contact.html" class="text-secondary hover:text-primary font-medium">Contact</a>
+                </nav>
+
+                <div class="flex items-center space-x-4">
+                    <a href="https://wa.me/2250758678224" class="bg-primary text-white px-4 py-2 rounded-md hover:bg-opacity-90 transition">WhatsApp</a>
+                    <button class="md:hidden text-secondary" id="mobile-menu-button">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mobile Menu -->
+            <div class="md:hidden hidden py-4 border-t" id="mobile-menu">
+                <div class="flex flex-col space-y-3">
+                    <a href="index.html" class="text-secondary hover:text-primary">Accueil</a>
+                    <a href="about.html" class="text-secondary hover:text-primary">À propos</a>
+                    <a href="services.html" class="text-secondary hover:text-primary">Nos services</a>
+                    <a href="properties.html" class="text-secondary hover:text-primary">Biens en location</a>
+                    <a href="simulation_mensualite.html" class="text-secondary hover:text-primary">Simulation Mensualité</a>
+                    <a href="simulation_promoteur.html" class="text-secondary hover:text-primary font-medium">Simulation Promoteur</a>
+                    <a href="contact.html" class="text-secondary hover:text-primary">Contact</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Simulation Section -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto">
+                <h1 class="text-4xl font-bold text-center mb-8 text-secondary">Simulation de Mensualité</h1>
+                <p class="text-xl text-center mb-12 text-gray-700">Calculez une nouvelle mensualité en fonction du montant à financer et de la durée choisie. La durée ne doit pas dépasser votre date de départ à la retraite.</p>
+
+
+
+                <div class="bg-white rounded-lg shadow-md p-8 border border-gray-200">
+                    <form id="mensualite-form" class="space-y-6">
+                        <div class="grid grid-cols-1 gap-6">
+                            <div class="hidden">
+                                <label for="montant-financer" class="block text-secondary font-medium mb-2">Montant à financer (FCFA)</label>
+                                <input type="number" id="montant-financer" class="w-full p-3 border border-gray-300 rounded-md bg-gray-100" placeholder="Prix d'achat" readonly>
+                            </div>
+                            <div>
+                                <label for="avance" class="block text-secondary font-medium mb-2">Avance (FCFA)</label>
+                                <input type="number" id="avance" class="w-full p-3 border border-gray-300 rounded-md" placeholder="Ex: 1000000" min="0" step="10000">
+                            </div>
+                            <div>
+                                <label for="duree" class="block text-secondary font-medium mb-2">Durée (mois)</label>
+                                <input type="number" id="duree" class="w-full p-3 border border-gray-300 rounded-md" placeholder="Ex: 240" required min="1">
+                            </div>
+                            <div class="hidden">
+                                <label for="taux" class="block text-secondary font-medium mb-2">Taux d'intérêt annuel (%)</label>
+                                <input type="number" id="taux" class="w-full p-3 border border-gray-300 rounded-md bg-gray-100" placeholder="5.5" value="5.5" readonly required min="0" step="0.01">
+                            </div>
+                        </div>
+                        <button type="submit" class="w-full bg-primary text-white py-3 rounded-md hover:bg-opacity-90 transition font-medium">Calculer la nouvelle mensualité</button>
+                    </form>
+
+                    <div id="result" class="mt-8 hidden">
+                        <div class="bg-gray-50 p-6 rounded-md border border-gray-200">
+                            <p class="text-lg"><strong>Nouvelle mensualité :</strong> <span id="nouvelle-mensualite" class="text-primary font-bold text-xl"></span> FCFA</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-secondary text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">SIAH SCI</h3>
+                    <p class="text-gray-300">Leader de l'immobilier en Côte d'Ivoire, nous vous accompagnons dans tous vos projets immobiliers.</p>
+                </div>
+
+                <div>
+                    <h4 class="font-bold mb-4">Liens rapides</h4>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-300 hover:text-white">Accueil</a></li>
+                        <li><a href="about.html" class="text-gray-300 hover:text-white">À propos</a></li>
+                        <li><a href="services.html" class="text-gray-300 hover:text-white">Nos services</a></li>
+                        <li><a href="properties.html" class="text-gray-300 hover:text-white">Biens en location</a></li>
+                        <li><a href="simulation_mensualite.html" class="text-gray-300 hover:text-white">Simulation Mensualité</a></li>
+                        <li><a href="contact.html" class="text-gray-300 hover:text-white">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-bold mb-4">Villes</h4>
+                    <ul class="space-y-2">
+                        <li><a href="properties.html?ville=abidjan" class="text-gray-300 hover:text-white">Abidjan</a></li>
+                        <li><a href="properties.html?ville=yamoussoukro" class="text-gray-300 hover:text-white">Yamoussoukro</a></li>
+                        <li><a href="properties.html?ville=bouake" class="text-gray-300 hover:text-white">Bouaké</a></li>
+                        <li><a href="properties.html?ville=sanpedro" class="text-gray-300 hover:text-white">San Pedro</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-bold mb-4">Newsletter</h4>
+                    <p class="text-gray-300 mb-4">Abonnez-vous pour recevoir nos dernières offres.</p>
+                    <form class="flex">
+                        <input type="email" placeholder="Votre email" class="flex-grow p-2 rounded-l-md text-secondary" required>
+                        <button type="submit" class="bg-primary text-white px-4 rounded-r-md"><i class="fas fa-paper-plane"></i></button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-300">
+                <p>&copy; 2023 SIAH SCI. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Constants for calculations
+        const CONSTANTS = {
+            margeMensuelle: 10000,
+            impotRevenuFoncier: 0.04,
+            tob: 0.10,
+            tauxRefinancement: 0.055,
+            dureeInit: 180,
+            margeVente: 0.10,
+            fraisExpertise: 0.01,
+            fraisNotaire: 0.08,
+            apport: 0,
+            tauxAnnuelFixe: 5.5
+        };
+
+        // Utility function to format numbers
+        function formatNumber(num) {
+            return num.toLocaleString('fr-FR', { maximumFractionDigits: 0 });
+        }
+
+        // Calculate property price from mensualite
+        function calculatePropertyPrice(mensualite) {
+            const { margeMensuelle, impotRevenuFoncier, tob, tauxRefinancement, dureeInit, margeVente, fraisExpertise, fraisNotaire, apport } = CONSTANTS;
+
+            // Étape 1: Loyer_Pre_Mensualite
+            const loyerPreMensualite = (mensualite - margeMensuelle * (1 + impotRevenuFoncier)) / (1 + impotRevenuFoncier + tob);
+
+            // Étape 2: MONTANT à refinancer
+            const tauxMensuelRef = tauxRefinancement / 12;
+            const montant = loyerPreMensualite * (1 - Math.pow(1 + tauxMensuelRef, -dureeInit)) / tauxMensuelRef;
+
+            // Étape 3: Prix d'achat par la SCI Principal
+            const prixAchatPrincipal = ((montant + apport) / (1 + margeVente)) / (1 + fraisExpertise + fraisNotaire);
+
+            // Set the montant à financer field
+            document.getElementById('montant-financer').value = prixAchatPrincipal.toFixed(0);
+
+            return prixAchatPrincipal;
+        }
+
+        // Calculate new mensualite
+        function calculateNewMensualite(montantFinancer, avance, duree, tauxAnnuel) {
+            const { margeMensuelle, fraisExpertise, fraisNotaire, margeVente, impotRevenuFoncier, tob } = CONSTANTS;
+
+            // Calcul du Montant à refinancer
+            const montantRefinancer = montantFinancer * (1 + fraisExpertise + fraisNotaire) * (1 + margeVente) - avance;
+
+            if (montantRefinancer <= 0) {
+                document.getElementById('nouvelle-mensualite').textContent = '0';
+                return;
+            }
+
+            // Pre_Mensualite (remboursement pur)
+            const tauxMensuel = tauxAnnuel / 100 / 12;
+            const preMensualite = montantRefinancer * (tauxMensuel * Math.pow(1 + tauxMensuel, duree)) / (Math.pow(1 + tauxMensuel, duree) - 1);
+
+            // Nouvelle mensualité
+            const nouvelleMensualite = preMensualite * (1 + impotRevenuFoncier + tob) + margeMensuelle * (1 + impotRevenuFoncier);
+            document.getElementById('nouvelle-mensualite').textContent = formatNumber(nouvelleMensualite);
+        }
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile menu toggle
+            document.getElementById('mobile-menu-button').addEventListener('click', function() {
+                const menu = document.getElementById('mobile-menu');
+                menu.classList.toggle('hidden');
+            });
+
+            // Get mensualite from URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const mensualiteParam = urlParams.get('mensualite');
+            if (mensualiteParam) {
+                const mensualite = parseFloat(mensualiteParam);
+                if (!isNaN(mensualite) && mensualite > 0) {
+                    calculatePropertyPrice(mensualite);
+                }
+            }
+
+            // Form submission
+            document.getElementById('mensualite-form').addEventListener('submit', function(e) {
+                e.preventDefault();
+
+                const montantFinancer = parseFloat(document.getElementById('montant-financer').value);
+                const avance = parseFloat(document.getElementById('avance').value) || 0;
+                const duree = parseInt(document.getElementById('duree').value);
+                const tauxAnnuel = parseFloat(document.getElementById('taux').value);
+
+                // Validation
+                if (isNaN(montantFinancer) || montantFinancer <= 0) {
+                    alert('Le prix d\'achat n\'est pas défini. Veuillez accéder à la page depuis une annonce avec le paramètre mensualite.');
+                    return;
+                }
+                if (duree <= 0 || tauxAnnuel < 0 || avance < 0) {
+                    alert('Veuillez saisir des valeurs positives valides.');
+                    return;
+                }
+                if (avance > montantFinancer) {
+                    alert('L\'avance ne peut pas être supérieure au prix du bien.');
+                    return;
+                }
+
+                calculateNewMensualite(montantFinancer, avance, duree, tauxAnnuel);
+                document.getElementById('result').style.display = 'block';
+            });
+        });
+    </script>
+</body>
+</html>

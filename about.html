@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>À propos de SIAH SCI - Location-Acquisition Immobilière</title>
+    <meta name="description" content="Découvrez SIAH SCI, leader de la location-acquisition en Côte d'Ivoire. Notre mission : faciliter l'accès à la propriété immobilière pour tous.">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#E30613",
+                        secondary: "#000000",
+                        light: "#FFFFFF",
+                        dark: "#1A1A1A"
+                    },
+                    fontFamily: {
+                        sans: ['"Helvetica Neue"', 'Arial', 'sans-serif'],
+                        heading: ['"Helvetica Neue"', 'Arial', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-sans bg-white">
+    <!-- Header -->
+    <header class="bg-white shadow-sm sticky top-0 z-50 border-b border-gray-200">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center">
+                    <a href="index.html" class="flex items-center">
+                        <img src="img/logo.jpg" alt="SIAH SCI" class="h-10 w-auto">
+                    </a>
+                </div>
+
+                <nav class="hidden md:flex space-x-8">
+                    <a href="index.html" class="text-secondary hover:text-primary font-medium">Accueil</a>
+                    <a href="about.html" class="text-secondary hover:text-primary font-medium">À propos</a>
+                    <a href="services.html" class="text-secondary hover:text-primary font-medium">Nos services</a>
+                    <a href="properties.html" class="text-secondary hover:text-primary font-medium">Biens en location</a>
+                    <a href="contact.html" class="text-secondary hover:text-primary font-medium">Contact</a>
+                </nav>
+
+                <div class="flex items-center space-x-4">
+                    <a href="https://wa.me/2250758678224" class="bg-primary text-white px-4 py-2 rounded-md hover:bg-opacity-90 transition">WhatsApp</a>
+                    <button class="md:hidden text-secondary" id="mobile-menu-button">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mobile Menu -->
+            <div class="md:hidden hidden py-4 border-t" id="mobile-menu">
+                <div class="flex flex-col space-y-3">
+                    <a href="index.html" class="text-secondary hover:text-primary">Accueil</a>
+                    <a href="about.html" class="text-secondary hover:text-primary">À propos</a>
+                    <a href="services.html" class="text-secondary hover:text-primary">Nos services</a>
+                    <a href="properties.html" class="text-secondary hover:text-primary">Biens en location</a>
+                    <a href="contact.html" class="text-secondary hover:text-primary">Contact</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="bg-gray-50 py-16">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto text-center">
+                <h1 class="text-4xl md:text-5xl font-bold mb-6 text-secondary">À propos de SIAH SCI</h1>
+                <p class="text-xl text-gray-700">Leader de la location-acquisition en Côte d'Ivoire, nous facilitons l'accès à la propriété immobilière pour particuliers et entreprises.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h2 class="text-3xl font-bold mb-6 text-secondary">Notre mission</h2>
+                    <p class="text-gray-700 mb-4">SIAH SCI est la première solution de location-acquisition immobilière en Côte d'Ivoire. Nous répondons au défi majeur de l'accès au logement dans un contexte de croissance démographique et urbaine rapide.</p>
+                    <p class="text-gray-700 mb-4">Notre modèle innovant permet aux salariés et particuliers d'accéder à la propriété sans apport initial élevé, via un système de location progressive menant à l'acquisition du bien.</p>
+                    <p class="text-gray-700">Nous collaborons étroitement avec des promoteurs immobiliers de premier plan et des entreprises pour offrir des solutions adaptées au marché ivoirien.</p>
+                </div>
+                <div>
+                    <img src="https://picsum.photos/600/400?random=10" alt="Équipe SIAH SCI" class="rounded-lg shadow-md">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-secondary text-center mb-12">SIAH SCI en chiffres</h2>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div class="text-center">
+                    <div class="text-4xl font-bold text-primary mb-2">500+</div>
+                    <p class="text-gray-700">Logements construits</p>
+                </div>
+                <div class="text-center">
+                    <div class="text-4xl font-bold text-primary mb-2">15+</div>
+                    <p class="text-gray-700">Années d'expérience</p>
+                </div>
+                <div class="text-center">
+                    <div class="text-4xl font-bold text-primary mb-2">1000+</div>
+                    <p class="text-gray-700">Clients satisfaits</p>
+                </div>
+                <div class="text-center">
+                    <div class="text-4xl font-bold text-primary mb-2">2</div>
+                    <p class="text-gray-700">Villes couvertes</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-secondary text-center mb-12">Notre équipe dirigeante</h2>
+            <div class="max-w-2xl mx-auto">
+                <div class="bg-white p-8 rounded-lg shadow-md border border-gray-200 text-center">
+                    <img src="https://picsum.photos/200?random=6" alt="Adama TOURE" class="w-32 h-32 rounded-full mx-auto mb-6">
+                    <h3 class="text-2xl font-bold mb-2 text-secondary">Adama TOURE</h3>
+                    <p class="text-primary font-medium mb-4">Directeur Général</p>
+                    <p class="text-gray-700 mb-4">Plus de 15 ans d'expérience professionnelle dans les secteurs financier, gestion d'actifs, agro-industrie, services et éducatif. Ancien membre du Conseil de surveillance Groupe PRIMONIAL (Europe), Gérant de fonds sénior, et Co-Directeur Académique HEC Paris.</p>
+                    <div class="flex justify-center space-x-4">
+                        <a href="#" class="text-primary hover:text-secondary"><i class="fab fa-linkedin text-2xl"></i></a>
+                        <a href="#" class="text-primary hover:text-secondary"><i class="fab fa-twitter text-2xl"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Values Section -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-secondary text-center mb-12">Nos valeurs</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="text-center">
+                    <div class="text-primary text-4xl mb-4">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-secondary">Fiabilité</h3>
+                    <p class="text-gray-600">Nous garantissons la sécurité et la transparence dans toutes nos transactions immobilières.</p>
+                </div>
+                <div class="text-center">
+                    <div class="text-primary text-4xl mb-4">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-secondary">Partenariat</h3>
+                    <p class="text-gray-600">Nous travaillons en étroite collaboration avec nos clients et partenaires pour des solutions sur mesure.</p>
+                </div>
+                <div class="text-center">
+                    <div class="text-primary text-4xl mb-4">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-secondary">Innovation</h3>
+                    <p class="text-gray-600">Nous proposons des solutions innovantes adaptées au marché immobilier ivoirien en évolution.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-16 bg-primary text-white">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold mb-4">Prêt à accéder à la propriété ?</h2>
+            <p class="text-xl mb-8">Contactez-nous dès aujourd'hui pour découvrir nos offres de location-acquisition.</p>
+            <a href="contact.html" class="bg-white text-primary px-8 py-3 rounded-md font-bold hover:bg-gray-100 transition">Nous contacter</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-secondary text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">SIAH SCI</h3>
+                    <p class="text-gray-300">Leader de la location-acquisition en Côte d'Ivoire, nous facilitons l'accès à la propriété pour tous.</p>
+                </div>
+
+                <div>
+                    <h4 class="font-bold mb-4">Liens rapides</h4>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-300 hover:text-white">Accueil</a></li>
+                        <li><a href="about.html" class="text-gray-300 hover:text-white">À propos</a></li>
+                        <li><a href="services.html" class="text-gray-300 hover:text-white">Nos services</a></li>
+                        <li><a href="properties.html" class="text-gray-300 hover:text-white">Biens en location</a></li>
+                        <li><a href="contact.html" class="text-gray-300 hover:text-white">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-bold mb-4">Villes</h4>
+                    <ul class="space-y-2">
+                        <li><a href="properties.html?ville=abidjan" class="text-gray-300 hover:text-white">Abidjan</a></li>
+                        <li><a href="properties.html?ville=yamoussoukro" class="text-gray-300 hover:text-white">Yamoussoukro</a></li>
+                        <li><a href="properties.html?ville=bouake" class="text-gray-300 hover:text-white">Bouaké</a></li>
+                        <li><a href="properties.html?ville=sanpedro" class="text-gray-300 hover:text-white">San Pedro</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-bold mb-4">Newsletter</h4>
+                    <p class="text-gray-300 mb-4">Abonnez-vous pour recevoir nos dernières offres.</p>
+                    <form class="flex">
+                        <input type="email" placeholder="Votre email" class="flex-grow p-2 rounded-l-md text-secondary">
+                        <button type="submit" class="bg-primary text-white px-4 rounded-r-md"><i class="fas fa-paper-plane"></i></button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-300">
+                <p>&copy; 2023 SIAH SCI. Tous droits réservés. | <a href="legal.html" class="hover:text-white">Mentions légales</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+    </script>
+</body>
+</html>

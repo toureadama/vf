@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <base target="_self">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIAH SCI - Location-Acquisition Immobilière en Côte d'Ivoire</title>
+    <meta name="description" content="SIAH SCI facilite l'accès à la propriété immobilière en Côte d'Ivoire via la location-acquisition. Découvrez nos services et biens disponibles à la location.">
+    <meta name="keywords" content="immobilier Côte d'Ivoire, location-acquisition, propriété, SIAH SCI, Abidjan, biens en location">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#E30613", // Rouge vif
+                        secondary: "#000000", // Noir
+                        light: "#FFFFFF", // Blanc
+                        dark: "#1A1A1A" // Noir profond
+                    },
+                    fontFamily: {
+                        sans: ['"Helvetica Neue"', 'Arial', 'sans-serif'],
+                        heading: ['"Helvetica Neue"', 'Arial', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-sans bg-white">
+    <!-- Header -->
+    <header class="bg-white shadow-sm sticky top-0 z-50 border-b border-gray-200">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center">
+                    <a href="index.html" class="flex items-center">
+                        <img src="img/logo.jpg" alt="SIAH SCI" class="h-10 w-auto">
+                    </a>
+                </div>
+
+                <nav class="hidden md:flex space-x-8">
+                    <a href="index.html" class="text-secondary hover:text-primary font-medium">Accueil</a>
+                    <a href="about.html" class="text-secondary hover:text-primary font-medium">À propos</a>
+                    <a href="services.html" class="text-secondary hover:text-primary font-medium">Nos services</a>
+                    <a href="properties.html" class="text-secondary hover:text-primary font-medium">Biens en location</a>
+                    <a href="contact.html" class="text-secondary hover:text-primary font-medium">Contact</a>
+                </nav>
+
+                <div class="flex items-center space-x-4">
+                    <a href="https://wa.me/2250758678224" class="bg-primary text-white px-4 py-2 rounded-md hover:bg-opacity-90 transition">WhatsApp</a>
+                    <button class="md:hidden text-secondary" id="mobile-menu-button">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mobile Menu -->
+            <div class="md:hidden hidden py-4 border-t" id="mobile-menu">
+                <div class="flex flex-col space-y-3">
+                    <a href="index.html" class="text-secondary hover:text-primary">Accueil</a>
+                    <a href="about.html" class="text-secondary hover:text-primary">À propos</a>
+                    <a href="services.html" class="text-secondary hover:text-primary">Nos services</a>
+                    <a href="properties.html" class="text-secondary hover:text-primary">Biens en location</a>
+                    <a href="simulation_mensualite.html" class="text-secondary hover:text-primary">Simulation Mensualité</a>
+                    <a href="contact.html" class="text-secondary hover:text-primary">Contact</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="bg-white py-16 border-b border-gray-200">
+        <div class="container mx-auto px-4">
+            <div class="max-w-2xl mx-auto text-center">
+                <h1 class="text-4xl md:text-5xl font-bold mb-6 text-secondary">Trouvez votre appartement idéal en Côte d'Ivoire</h1>
+                <p class="text-xl mb-8 text-gray-700">Découvrez notre sélection exclusive d'appartements à vendre et à louer dans les meilleurs quartiers</p>
+
+                <div class="bg-white rounded-lg shadow-md p-4 border border-gray-200">
+                    <form id="search-form" class="flex flex-col md:flex-row gap-4">
+                        <select name="transaction" class="flex-grow p-3 border border-gray-300 rounded-md text-secondary">
+                            <option value="">Type de transaction</option>
+                            <option value="vente">À vendre</option>
+                            <option value="location">À louer</option>
+                        </select>
+
+                        <select name="type" class="flex-grow p-3 border border-gray-300 rounded-md text-secondary">
+                            <option value="">Type de bien</option>
+                            <option value="appartement">Appartement</option>
+                            <option value="maison">Maison</option>
+                            <option value="villa">Villa</option>
+                            <option value="studio">Studio</option>
+                        </select>
+
+                        <select name="ville" class="flex-grow p-3 border border-gray-300 rounded-md text-secondary">
+                            <option value="">Ville</option>
+                            <option value="abidjan">Abidjan</option>
+                            <option value="sanpedro">San Pedro</option>
+                            <option value="" disabled>Autres villes bientôt disponibles</option>
+                        </select>
+
+                        <button type="submit" class="bg-primary text-white px-6 py-3 rounded-md hover:bg-opacity-90 transition">Rechercher</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Properties -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center mb-10">
+                <h2 class="text-3xl font-bold text-secondary">Nos dernières offres</h2>
+                <a href="properties.html" class="text-primary hover:underline">Voir tout</a>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Property Card 1 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition border border-gray-200">
+                    <div class="relative">
+                        <img src="https://akacias-ci.com/website/images/ahoue/Immeuble_A_2.jpg" alt="Appartement 3 pièces à Ahoué" class="w-full h-64 object-cover" loading="lazy">
+                        <div class="absolute top-4 right-4 bg-secondary text-white px-3 py-1 rounded-full text-sm font-medium">Location-acquisition</div>
+                        <div class="absolute bottom-4 left-4 bg-white text-secondary px-3 py-1 rounded-full text-sm font-medium border border-gray-300">225 000 FCFA/mois</div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2 text-secondary">Appartement 3 pièces à Ahoué</h3>
+                        <div class="flex items-center text-gray-600 mb-4">
+                            <i class="fas fa-map-marker-alt mr-2 text-primary"></i>
+                            <span>Ahoué, Abidjan</span>
+                        </div>
+                        <div class="flex justify-between border-b border-gray-200 pb-4 mb-4">
+                            <div class="flex items-center">
+                                <i class="fas fa-bed mr-2 text-primary"></i>
+                                <span>2 chambres</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-bath mr-2 text-primary"></i>
+                                <span>1 salle de bain</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-ruler-combined mr-2 text-primary"></i>
+                                <span>90 m²</span>
+                            </div>
+                        </div>
+                        <button class="w-full bg-primary text-white py-2 rounded-md hover:bg-opacity-90 transition hidden">Voir les détails</button>
+                    </div>
+                </div>
+
+                <!-- Property Card 2 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition border border-gray-200">
+                    <div class="relative">
+                        <img src="https://www.addohaafrique.com/sites/default/files/2023-02/F3_1.png" alt="Appartement 4 pièces à Lagoona City" class="w-full h-64 object-cover" loading="lazy">
+                        <div class="absolute top-4 right-4 bg-secondary text-white px-3 py-1 rounded-full text-sm font-medium">Location-acquisition</div>
+                        <div class="absolute bottom-4 left-4 bg-white text-secondary px-3 py-1 rounded-full text-sm font-medium border border-gray-300">265 000 FCFA/mois</div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2 text-secondary">Appartement 4 pièces à Lagoona City</h3>
+                        <div class="flex items-center text-gray-600 mb-4">
+                            <i class="fas fa-map-marker-alt mr-2 text-primary"></i>
+                            <span>Locodjro, Abidjan</span>
+                        </div>
+                        <div class="flex justify-between border-b border-gray-200 pb-4 mb-4">
+                            <div class="flex items-center">
+                                <i class="fas fa-bed mr-2 text-primary"></i>
+                                <span>3 chambres</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-bath mr-2 text-primary"></i>
+                                <span>2 salles de bain</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-ruler-combined mr-2 text-primary"></i>
+                                <span>70 m²</span>
+                            </div>
+                        </div>
+                        <button class="w-full bg-primary text-white py-2 rounded-md hover:bg-opacity-90 transition hidden">Voir les détails</button>
+                    </div>
+                </div>
+
+                <!-- Property Card 3 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition border border-gray-200">
+                    <div class="relative">
+                        <img src="https://leaderconstruction.ci/wp-content/uploads/2024/06/appartement-songon-leader-construction-1.png" alt="Appartement 3 pièces à Cité Olympé Songon" class="w-full h-64 object-cover" loading="lazy">
+                        <div class="absolute top-4 right-4 bg-secondary text-white px-3 py-1 rounded-full text-sm font-medium">Location-acquisition</div>
+                        <div class="absolute bottom-4 left-4 bg-white text-secondary px-3 py-1 rounded-full text-sm font-medium border border-gray-300">345 000 FCFA/mois</div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2 text-secondary">Appartement 3 pièces à Cité Olympé Songon</h3>
+                        <div class="flex items-center text-gray-600 mb-4">
+                            <i class="fas fa-map-marker-alt mr-2 text-primary"></i>
+                            <span>Songon, Abidjan</span>
+                        </div>
+                        <div class="flex justify-between border-b border-gray-200 pb-4 mb-4">
+                            <div class="flex items-center">
+                                <i class="fas fa-bed mr-2 text-primary"></i>
+                                <span>2 chambres</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-bath mr-2 text-primary"></i>
+                                <span>1 salle de bain</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-ruler-combined mr-2 text-primary"></i>
+                                <span>90 m²</span>
+                            </div>
+                        </div>
+                        <button class="w-full bg-primary text-white py-2 rounded-md hover:bg-opacity-90 transition hidden">Voir les détails</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="py-16 bg-gray-50 border-t border-b border-gray-200">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-secondary text-center mb-12">Pourquoi choisir SIAH SCI ?</h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-200 text-center">
+                    <div class="text-primary text-4xl mb-4">
+                        <i class="fas fa-hand-holding-usd"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-secondary">Meilleurs prix</h3>
+                    <p class="text-gray-600">Nous négocions les meilleurs prix du marché pour vous garantir des offres compétitives.</p>
+                </div>
+
+                <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-200 text-center">
+                    <div class="text-primary text-4xl mb-4">
+                        <i class="fas fa-search-location"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-secondary">Large sélection</h3>
+                    <p class="text-gray-600">Des milliers de biens disponibles dans toutes les régions de Côte d'Ivoire.</p>
+                </div>
+
+                <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-200 text-center">
+                    <div class="text-primary text-4xl mb-4">
+                        <i class="fas fa-user-shield"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-secondary">Sécurité garantie</h3>
+                    <p class="text-gray-600">Tous nos biens sont vérifiés pour vous offrir une transaction en toute sécurité.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-secondary text-center mb-12">Témoignages de nos clients</h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
+                    <div class="flex items-center mb-4">
+                        <img src="https://picsum.photos/100?random=4" alt="Client satisfait" class="w-12 h-12 rounded-full mr-4" loading="lazy">
+                        <div>
+                            <h4 class="font-bold text-secondary">Jean Kouassi</h4>
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">"Grâce à SIAH SCI, j'ai trouvé l'appartement de mes rêves à Cocody. Le processus a été simple et transparent. Je recommande vivement !"</p>
+                </div>
+
+                <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
+                    <div class="flex items-center mb-4">
+                        <img src="https://picsum.photos/100?random=5" alt="Client satisfait" class="w-12 h-12 rounded-full mr-4" loading="lazy">
+                        <div>
+                            <h4 class="font-bold text-secondary">Amina Traoré</h4>
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">"Service professionnel et réactif. J'ai loué un magnifique appartement à Marcory en moins d'une semaine. Très satisfaite de l'accompagnement."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="py-16 bg-secondary text-white">
+        <div class="container mx-auto px-4">
+            <div class="max-w-2xl mx-auto text-center">
+                <h2 class="text-3xl font-bold mb-4">Restez informé des nouvelles offres</h2>
+                <p class="mb-8">Abonnez-vous à notre newsletter pour recevoir les dernières annonces immobilières en Côte d'Ivoire.</p>
+
+                <form class="flex flex-col md:flex-row gap-4">
+                    <input type="email" placeholder="Votre adresse email" class="flex-grow p-3 rounded-md text-secondary" required>
+                    <button type="submit" class="bg-primary text-white px-6 py-3 rounded-md hover:bg-opacity-90 transition">S'abonner</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-secondary text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">SIAH SCI</h3>
+                    <p class="text-gray-300">Leader de l'immobilier en Côte d'Ivoire, nous vous accompagnons dans tous vos projets immobiliers.</p>
+                </div>
+
+                <div>
+                    <h4 class="font-bold mb-4">Liens rapides</h4>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-300 hover:text-white">Accueil</a></li>
+                        <li><a href="about.html" class="text-gray-300 hover:text-white">À propos</a></li>
+                        <li><a href="services.html" class="text-gray-300 hover:text-white">Nos services</a></li>
+                        <li><a href="properties.html" class="text-gray-300 hover:text-white">Biens en location</a></li>
+                        <li><a href="simulation-credit.html" class="text-gray-300 hover:text-white">Simulation Crédit</a></li>
+                        <li><a href="contact.html" class="text-gray-300 hover:text-white">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-bold mb-4">Villes</h4>
+                    <ul class="space-y-2">
+                        <li><a href="properties.html?ville=abidjan" class="text-gray-300 hover:text-white">Abidjan</a></li>
+                        <li><a href="properties.html?ville=sanpedro" class="text-gray-300 hover:text-white">San Pedro</a></li>
+                        <li><a href="properties.html?ville=bonoua" class="text-gray-300 hover:text-white">Bonoua</a></li>
+                        <li class="text-gray-500 text-sm">Autres villes bientôt disponibles</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-bold mb-4">Newsletter</h4>
+                    <p class="text-gray-300 mb-4">Abonnez-vous pour recevoir nos dernières offres.</p>
+                    <form class="flex">
+                        <input type="email" placeholder="flex-grow p-2 rounded-l-md text-secondary">
+                        <button type="submit" class="bg-primary text-white px-4 rounded-r-md"><i class="fas fa-paper-plane"></i></button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-300">
+                <p>&copy; 2026 SIAH SCI. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+
+        // Search form submission
+        document.getElementById('search-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const formData = new FormData(this);
+            const params = new URLSearchParams();
+            for (let [key, value] of formData.entries()) {
+                if (value) {
+                    params.append(key, value);
+                }
+            }
+            window.location.href = 'properties.html?' + params.toString();
+        });
+
+        // Navigation function
+        function navigate(page) {
+            console.log(`Navigating to ${page}`);
+            // In a real implementation, this would handle page routing
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulation Promoteur - SIAH SCI</title>
+    <meta name="description" content="Simulez la mensualité pour vos projets immobiliers avec SIAH SCI. Calculez le montant des mensualités en fonction du prix du bien, de l'avance et de la durée.">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#E30613",
+                        secondary: "#000000",
+                        light: "#FFFFFF",
+                        dark: "#1A1A1A"
+                    },
+                    fontFamily: {
+                        sans: ['"Helvetica Neue"', 'Arial', 'sans-serif'],
+                        heading: ['"Helvetica Neue"', 'Arial', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-sans bg-white">
+    <!-- Header -->
+    <header class="bg-white shadow-sm sticky top-0 z-50 border-b border-gray-200">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center">
+                    <a href="index.html" class="flex items-center">
+                        <img src="img/logo.jpg" alt="SIAH SCI" class="h-10 w-auto">
+                    </a>
+                </div>
+
+                <nav class="hidden md:flex space-x-8">
+                    <a href="index.html" class="text-secondary hover:text-primary font-medium">Accueil</a>
+                    <a href="about.html" class="text-secondary hover:text-primary font-medium">À propos</a>
+                    <a href="services.html" class="text-secondary hover:text-primary font-medium">Nos services</a>
+                    <a href="properties.html" class="text-secondary hover:text-primary font-medium">Biens en location</a>
+                    <a href="simulation_mensualite.html" class="text-secondary hover:text-primary font-medium">Simulation Mensualité</a>
+                    <a href="contact.html" class="text-secondary hover:text-primary font-medium">Contact</a>
+                </nav>
+
+                <div class="flex items-center space-x-4">
+                    <a href="https://wa.me/2250758678224" class="bg-primary text-white px-4 py-2 rounded-md hover:bg-opacity-90 transition">WhatsApp</a>
+                    <button class="md:hidden text-secondary" id="mobile-menu-button">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mobile Menu -->
+            <div class="md:hidden hidden py-4 border-t" id="mobile-menu">
+                <div class="flex flex-col space-y-3">
+                    <a href="index.html" class="text-secondary hover:text-primary">Accueil</a>
+                    <a href="about.html" class="text-secondary hover:text-primary">À propos</a>
+                    <a href="services.html" class="text-secondary hover:text-primary">Nos services</a>
+                    <a href="properties.html" class="text-secondary hover:text-primary">Biens en location</a>
+                    <a href="simulation_mensualite.html" class="text-secondary hover:text-primary">Simulation Mensualité</a>
+                    <a href="contact.html" class="text-secondary hover:text-primary">Contact</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Login Section -->
+    <section id="login-section" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="max-w-md mx-auto">
+                <h1 class="text-4xl font-bold text-center mb-8 text-secondary">Espace Promoteur</h1>
+                <p class="text-xl text-center mb-12 text-gray-700">Veuillez vous connecter pour accéder à la simulation.</p>
+
+                <div class="bg-white rounded-lg shadow-md p-8 border border-gray-200">
+                    <form id="login-form" class="space-y-6">
+                        <div>
+                            <label for="username" class="block text-secondary font-medium mb-2">Identifiant</label>
+                            <input type="text" id="username" class="w-full p-3 border border-gray-300 rounded-md" placeholder="Votre identifiant" required>
+                        </div>
+                        <div class="relative">
+                            <label for="password" class="block text-secondary font-medium mb-2">Mot de passe</label>
+                            <div class="relative">
+                                <input type="password" id="password" class="w-full p-3 border border-gray-300 rounded-md pr-10" placeholder="Votre mot de passe" required>
+                                <button type="button" id="toggle-password" class="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-primary">
+                                    <i class="fas fa-eye" id="eye-icon"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div id="login-error" class="hidden text-red-600 text-sm text-center">
+                            Identifiant ou mot de passe incorrect.
+                        </div>
+                        <button type="submit" class="w-full bg-primary text-white py-3 rounded-md hover:bg-opacity-90 transition font-medium">Se connecter</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Simulation Section (Hidden by default) -->
+    <section id="simulation-section" class="py-16 bg-gray-50 hidden">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto">
+                <div class="flex justify-between items-center mb-8">
+                    <h1 class="text-4xl font-bold text-secondary">Simulation Mensualité - Promoteur</h1>
+                    <button id="logout-btn" class="text-primary hover:text-opacity-80 font-medium">
+                        <i class="fas fa-sign-out-alt mr-2"></i>Déconnexion
+                    </button>
+                </div>
+                <p class="text-xl text-center mb-12 text-gray-700">Calculez la mensualité en fonction du montant du bien, de l'avance et de la durée choisie.</p>
+
+                <div class="bg-white rounded-lg shadow-md p-8 border border-gray-200">
+                    <form id="mensualite-form" class="space-y-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="montant-financer" class="block text-secondary font-medium mb-2">Montant du bien à financer (FCFA)</label>
+                                <input type="number" id="montant-financer" class="w-full p-3 border border-gray-300 rounded-md" placeholder="Ex: 50000000" min="0" step="100000" required>
+                            </div>
+                            <div>
+                                <label for="avance" class="block text-secondary font-medium mb-2">Avance (FCFA)</label>
+                                <input type="number" id="avance" class="w-full p-3 border border-gray-300 rounded-md" placeholder="Ex: 10000000" min="0" step="100000">
+                            </div>
+                            <div>
+                                <label for="duree" class="block text-secondary font-medium mb-2">Durée (mois)</label>
+                                <input type="number" id="duree" class="w-full p-3 border border-gray-300 rounded-md" placeholder="Ex: 240" required min="1">
+                            </div>
+                            <div class="hidden">
+                                <label for="taux" class="block text-secondary font-medium mb-2">Taux d'intérêt annuel (%)</label>
+                                <input type="number" id="taux" class="w-full p-3 border border-gray-300 rounded-md" placeholder="5.5" value="5.5" required min="0" step="0.01">
+                            </div>
+                        </div>
+                        <button type="submit" class="w-full bg-primary text-white py-3 rounded-md hover:bg-opacity-90 transition font-medium">Calculer la mensualité</button>
+                    </form>
+
+                    <div id="result" class="mt-8 hidden">
+                        <div class="bg-gray-50 p-6 rounded-md border border-gray-200">
+                            <p class="text-lg mb-2"><strong>Montant à financer :</strong> <span id="montant-affiche" class="text-secondary font-bold"></span> FCFA</p>
+                            <p class="text-lg mb-2"><strong>Avance :</strong> <span id="avance-affiche" class="text-secondary font-bold"></span> FCFA</p>
+                            <p class="text-lg mb-2"><strong>Durée :</strong> <span id="duree-affiche" class="text-secondary font-bold"></span> mois</p>
+                            <p class="hidden"><strong>Taux :</strong> <span id="taux-affiche" class="text-secondary font-bold"></span> %</p>
+                            <p class="text-xl border-t border-gray-300 pt-4"><strong>Mensualité :</strong> <span id="nouvelle-mensualite" class="text-primary font-bold text-2xl"></span> FCFFA</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-secondary text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">SIAH SCI</h3>
+                    <p class="text-gray-300">Leader de l'immobilier en Côte d'Ivoire, nous vous accompagnons dans tous vos projets immobiliers.</p>
+                </div>
+
+                <div>
+                    <h4 class="font-bold mb-4">Liens rapides</h4>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-300 hover:text-white">Accueil</a></li>
+                        <li><a href="about.html" class="text-gray-300 hover:text-white">À propos</a></li>
+                        <li><a href="services.html" class="text-gray-300 hover:text-white">Nos services</a></li>
+                        <li><a href="properties.html" class="text-gray-300 hover:text-white">Biens en location</a></li>
+                        <li><a href="simulation_mensualite.html" class="text-gray-300 hover:text-white">Simulation Mensualité</a></li>
+                        <li><a href="contact.html" class="text-gray-300 hover:text-white">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-bold mb-4">Villes</h4>
+                    <ul class="space-y-2">
+                        <li><a href="properties.html?ville=abidjan" class="text-gray-300 hover:text-white">Abidjan</a></li>
+                        <li><a href="properties.html?ville=yamoussoukro" class="text-gray-300 hover:text-white">Yamoussoukro</a></li>
+                        <li><a href="properties.html?ville=bouake" class="text-gray-300 hover:text-white">Bouaké</a></li>
+                        <li><a href="properties.html?ville=sanpedro" class="text-gray-300 hover:text-white">San Pedro</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-bold mb-4">Newsletter</h4>
+                    <p class="text-gray-300 mb-4">Abonnez-vous pour recevoir nos dernières offres.</p>
+                    <form class="flex">
+                        <input type="email" placeholder="Votre email" class="flex-grow p-2 rounded-l-md text-secondary" required>
+                        <button type="submit" class="bg-primary text-white px-4 rounded-r-md"><i class="fas fa-paper-plane"></i></button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-300">
+                <p>&copy; 2023 SIAH SCI. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Constants for calculations
+        const CONSTANTS = {
+            margeMensuelle: 10000,
+            impotRevenuFoncier: 0.04,
+            tob: 0.10,
+            tauxRefinancement: 0.055,
+            dureeInit: 180,
+            margeVente: 0.015,
+            fraisExpertise: 0.01,
+            fraisNotaire: 0.08,
+            apport: 0,
+            tauxAnnuelFixe: 5.5
+        };
+
+        // Authentication credentials
+        const AUTH = {
+            username: 'promoteur',
+            password: 'siah2026'
+        };
+
+        // Utility function to format numbers
+        function formatNumber(num) {
+            return num.toLocaleString('fr-FR', { maximumFractionDigits: 0 });
+        }
+
+        // Calculate new mensualite
+        function calculateNewMensualite(montantFinancer, avance, duree, tauxAnnuel) {
+            const { margeMensuelle, fraisExpertise, fraisNotaire, margeVente, impotRevenuFoncier, tob } = CONSTANTS;
+
+            // Calcul du Montant à refinancer
+            const montantRefinancer = montantFinancer * (1 + fraisExpertise + fraisNotaire) * (1 + margeVente) - avance;
+
+            if (montantRefinancer <= 0) {
+                document.getElementById('nouvelle-mensualite').textContent = '0';
+                return;
+            }
+
+            // Pre_Mensualite (remboursement pur)
+            const tauxMensuel = tauxAnnuel / 100 / 12;
+            const preMensualite = montantRefinancer * (tauxMensuel * Math.pow(1 + tauxMensuel, duree)) / (Math.pow(1 + tauxMensuel, duree) - 1);
+
+            // Nouvelle mensualité
+            const nouvelleMensualite = preMensualite * (1 + impotRevenuFoncier + tob) + margeMensuelle * (1 + impotRevenuFoncier);
+            document.getElementById('nouvelle-mensualite').textContent = formatNumber(nouvelleMensualite);
+        }
+
+        // Check authentication status
+        function checkAuth() {
+            const isAuthenticated = sessionStorage.getItem('promoteur_auth');
+            if (isAuthenticated === 'true') {
+                document.getElementById('login-section').classList.add('hidden');
+                document.getElementById('simulation-section').classList.remove('hidden');
+            } else {
+                document.getElementById('login-section').classList.remove('hidden');
+                document.getElementById('simulation-section').classList.add('hidden');
+            }
+        }
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile menu toggle
+            document.getElementById('mobile-menu-button').addEventListener('click', function() {
+                const menu = document.getElementById('mobile-menu');
+                menu.classList.toggle('hidden');
+            });
+
+            // Password visibility toggle
+            const togglePasswordBtn = document.getElementById('toggle-password');
+            const passwordInput = document.getElementById('password');
+            const eyeIcon = document.getElementById('eye-icon');
+
+            if (togglePasswordBtn && passwordInput && eyeIcon) {
+                togglePasswordBtn.addEventListener('click', function() {
+                    const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+                    passwordInput.setAttribute('type', type);
+                    
+                    // Toggle eye icon
+                    if (type === 'text') {
+                        eyeIcon.classList.remove('fa-eye');
+                        eyeIcon.classList.add('fa-eye-slash');
+                    } else {
+                        eyeIcon.classList.remove('fa-eye-slash');
+                        eyeIcon.classList.add('fa-eye');
+                    }
+                });
+            }
+
+            // Check authentication status
+            checkAuth();
+
+            // Login form submission
+            document.getElementById('login-form').addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const username = document.getElementById('username').value;
+                const password = document.getElementById('password').value;
+                
+                if (username === AUTH.username && password === AUTH.password) {
+                    sessionStorage.setItem('promoteur_auth', 'true');
+                    document.getElementById('login-error').classList.add('hidden');
+                    checkAuth();
+                } else {
+                    document.getElementById('login-error').classList.remove('hidden');
+                }
+            });
+
+            // Logout button
+            document.getElementById('logout-btn').addEventListener('click', function() {
+                sessionStorage.removeItem('promoteur_auth');
+                document.getElementById('username').value = '';
+                document.getElementById('password').value = '';
+                checkAuth();
+            });
+
+            // Simulation form submission
+            document.getElementById('mensualite-form').addEventListener('submit', function(e) {
+                e.preventDefault();
+
+                const montantFinancer = parseFloat(document.getElementById('montant-financer').value);
+                const avance = parseFloat(document.getElementById('avance').value) || 0;
+                const duree = parseInt(document.getElementById('duree').value);
+                const tauxAnnuel = parseFloat(document.getElementById('taux').value);
+
+                // Validation
+                if (isNaN(montantFinancer) || montantFinancer <= 0) {
+                    alert('Veuillez saisir un montant à financer valide.');
+                    return;
+                }
+                if (duree <= 0 || isNaN(duree)) {
+                    alert('Veuillez saisir une durée valide.');
+                    return;
+                }
+                if (tauxAnnuel < 0 || isNaN(tauxAnnuel)) {
+                    alert('Veuillez saisir un taux valide.');
+                    return;
+                }
+                if (avance < 0) {
+                    alert('L\'avance ne peut pas être négative.');
+                    return;
+                }
+                if (avance > montantFinancer) {
+                    alert('L\'avance ne peut pas être supérieure au prix du bien.');
+                    return;
+                }
+
+                // Calculate and display results
+                calculateNewMensualite(montantFinancer, avance, duree, tauxAnnuel);
+                
+                // Display input values in result
+                document.getElementById('montant-affiche').textContent = formatNumber(montantFinancer);
+                document.getElementById('avance-affiche').textContent = formatNumber(avance);
+                document.getElementById('duree-affiche').textContent = duree;
+                document.getElementById('taux-affiche').textContent = tauxAnnuel.toFixed(2);
+                
+                document.getElementById('result').style.display = 'block';
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Détail du bien - SIAH SCI - Location-Acquisition Immobilière</title>
+    <meta name="description" content="Découvrez les détails complets de ce bien immobilier disponible à la location-acquisition. Photos, description, prix et conditions.">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#E30613",
+                        secondary: "#000000",
+                        light: "#FFFFFF",
+                        dark: "#1A1A1A"
+                    },
+                    fontFamily: {
+                        sans: ['"Helvetica Neue"', 'Arial', 'sans-serif'],
+                        heading: ['"Helvetica Neue"', 'Arial', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-sans bg-white">
+    <!-- Header -->
+    <header class="bg-white shadow-sm sticky top-0 z-50 border-b border-gray-200">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center">
+                    <a href="index.html" class="flex items-center">
+                        <img src="img/logo.jpg" alt="SIAH SCI" class="h-10 w-auto">
+                    </a>
+                </div>
+
+                <nav class="hidden md:flex space-x-8">
+                    <a href="index.html" class="text-secondary hover:text-primary font-medium">Accueil</a>
+                    <a href="about.html" class="text-secondary hover:text-primary font-medium">À propos</a>
+                    <a href="services.html" class="text-secondary hover:text-primary font-medium">Nos services</a>
+                    <a href="properties.html" class="text-secondary hover:text-primary font-medium">Biens en location</a>
+                    <a href="contact.html" class="text-secondary hover:text-primary font-medium">Contact</a>
+                </nav>
+
+                <div class="flex items-center space-x-4">
+                    <a href="https://wa.me/2250758678224" class="bg-primary text-white px-4 py-2 rounded-md hover:bg-opacity-90 transition">WhatsApp</a>
+                    <button class="md:hidden text-secondary" id="mobile-menu-button">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mobile Menu -->
+            <div class="md:hidden hidden py-4 border-t" id="mobile-menu">
+                <div class="flex flex-col space-y-3">
+                    <a href="index.html" class="text-secondary hover:text-primary">Accueil</a>
+                    <a href="about.html" class="text-secondary hover:text-primary">À propos</a>
+                    <a href="services.html" class="text-secondary hover:text-primary">Nos services</a>
+                    <a href="properties.html" class="text-secondary hover:text-primary">Biens en location</a>
+                    <a href="contact.html" class="text-secondary hover:text-primary">Contact</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Property Header -->
+    <section class="bg-gray-50 py-8">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center">
+                <div>
+                    <h1 class="text-3xl md:text-4xl font-bold text-secondary mb-2">Appartement moderne à Cocody</h1>
+                    <div class="flex items-center text-gray-600 mb-4">
+                        <i class="fas fa-map-marker-alt mr-2 text-primary"></i>
+                        <span>Cocody, Abidjan, Côte d'Ivoire</span>
+                    </div>
+                    <div class="text-3xl font-bold text-primary">500 000 FCFA/mois</div>
+                </div>
+                <div class="flex space-x-4 mt-4 md:mt-0">
+                    <a href="https://wa.me/2250758678224?text=Je suis intéressé par l'appartement à Cocody" class="bg-green-500 text-white px-6 py-3 rounded-md hover:bg-green-600 transition font-medium">
+                        <i class="fab fa-whatsapp mr-2"></i>WhatsApp
+                    </a>
+                    <a href="mailto:contact@siahsci.com?subject=Demande d'information - Appartement Cocody" class="bg-primary text-white px-6 py-3 rounded-md hover:bg-opacity-90 transition font-medium">
+                        <i class="fas fa-envelope mr-2"></i>Email
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Property Images -->
+    <section class="py-8 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                <div class="md:col-span-2">
+                    <img src="https://picsum.photos/800/600?random=1" alt="Appartement moderne à Cocody - Photo principale" class="w-full h-96 object-cover rounded-lg">
+                </div>
+                <div class="md:col-span-2 grid grid-cols-2 gap-4">
+                    <img src="https://picsum.photos/400/300?random=2" alt="Photo 2" class="w-full h-44 object-cover rounded-lg">
+                    <img src="https://picsum.photos/400/300?random=3" alt="Photo 3" class="w-full h-44 object-cover rounded-lg">
+                    <img src="https://picsum.photos/400/300?random=4" alt="Photo 4" class="w-full h-44 object-cover rounded-lg">
+                    <img src="https://picsum.photos/400/300?random=5" alt="Photo 5" class="w-full h-44 object-cover rounded-lg">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Property Details -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <!-- Main Details -->
+                <div class="lg:col-span-2">
+                    <h2 class="text-2xl font-bold text-secondary mb-6">Description du bien</h2>
+                    <p class="text-gray-700 mb-6">Magnifique appartement moderne de 3 chambres situé dans le quartier prestigieux de Cocody à Abidjan. Cet appartement neuf offre un cadre de vie exceptionnel avec une vue dégagée et des finitions de qualité supérieure.</p>
+
+                    <p class="text-gray-700 mb-6">L'appartement dispose d'un salon spacieux, d'une cuisine équipée, de 3 chambres avec placards intégrés, de 2 salles de bain modernes et d'un balcon privatif. La résidence sécurisée offre une piscine commune, un parking souterrain et un service de gardiennage 24h/24.</p>
+
+                    <p class="text-gray-700 mb-8">Idéalement situé à proximité des écoles internationales, des centres commerciaux et des axes routiers principaux, cet appartement représente un investissement immobilier sûr dans l'un des quartiers les plus prisés d'Abidjan.</p>
+
+                    <!-- Features -->
+                    <h3 class="text-xl font-bold text-secondary mb-4">Équipements et commodités</h3>
+                    <div class="grid grid-cols-2 md:grid-cols-3 gap-4 mb-8">
+                        <div class="flex items-center">
+                            <i class="fas fa-check text-primary mr-2"></i>
+                            <span>Climatisation</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-check text-primary mr-2"></i>
+                            <span>Cuisine équipée</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-check text-primary mr-2"></i>
+                            <span>Balcon privatif</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-check text-primary mr-2"></i>
+                            <span>Parking</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-check text-primary mr-2"></i>
+                            <span>Sécurité 24h</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-check text-primary mr-2"></i>
+                            <span>Piscine commune</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-check text-primary mr-2"></i>
+                            <span>Ascenseur</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-check text-primary mr-2"></i>
+                            <span>Gardiennage</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-check text-primary mr-2"></i>
+                            <span>Internet haut débit</span>
+                        </div>
+                    </div>
+
+                    <!-- Location -->
+                    <h3 class="text-xl font-bold text-secondary mb-4">Emplacement</h3>
+                    <p class="text-gray-700 mb-4">Situé dans le quartier résidentiel de Cocody, cet appartement bénéficie d'une excellente accessibilité :</p>
+                    <ul class="list-disc list-inside text-gray-700 mb-6 ml-4">
+                        <li>À 5 minutes du Boulevard de la République</li>
+                        <li>Proche des écoles internationales (Lycée Français, écoles américaines)</li>
+                        <li>À proximité du Centre Commercial de Cocody</li>
+                        <li>Accès facile aux hôpitaux et cliniques</li>
+                        <li>Transport en commun (bus, taxis) à proximité</li>
+                    </ul>
+                </div>
+
+                <!-- Sidebar -->
+                <div>
+                    <!-- Quick Info -->
+                    <div class="bg-white p-6 rounded-lg shadow-md mb-6">
+                        <h3 class="text-lg font-bold text-secondary mb-4">Informations rapides</h3>
+                        <div class="space-y-3">
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">Type :</span>
+                                <span class="font-medium">Appartement</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">Chambres :</span>
+                                <span class="font-medium">3</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">Salles de bain :</span>
+                                <span class="font-medium">2</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">Surface :</span>
+                                <span class="font-medium">120 m²</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">Étage :</span>
+                                <span class="font-medium">3ème</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">Année :</span>
+                                <span class="font-medium">2020</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Pricing -->
+                    <div class="bg-white p-6 rounded-lg shadow-md mb-6">
+                        <h3 class="text-lg font-bold text-secondary mb-4">Prix et conditions</h3>
+                        <div class="space-y-3">
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">Loyer mensuel :</span>
+                                <span class="font-bold text-primary">500 000 FCFA</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">Caution :</span>
+                                <span class="font-medium">1 500 000 FCFA</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">Charges :</span>
+                                <span class="font-medium">50 000 FCFA/mois</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">Durée minimum :</span>
+                                <span class="font-medium">24 mois</span>
+                            </div>
+                        </div>
+                        <div class="mt-4 p-3 bg-primary bg-opacity-10 rounded">
+                            <p class="text-sm text-primary font-medium">Éligible au programme location-acquisition SIAH SCI</p>
+                        </div>
+                    </div>
+
+                    <!-- Contact CTA -->
+                    <div class="bg-primary text-white p-6 rounded-lg">
+                        <h3 class="text-lg font-bold mb-4">Intéressé par ce bien ?</h3>
+                        <p class="mb-4">Contactez-nous pour organiser une visite ou obtenir plus d'informations.</p>
+                        <a href="https://wa.me/2250758678224?text=Je souhaite visiter l'appartement à Cocody" class="block bg-white text-primary text-center py-3 rounded-md font-bold hover:bg-gray-100 transition">
+                            Demander une visite
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Similar Properties -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-secondary text-center mb-12">Biens similaires</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Similar Property 1 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition border border-gray-200">
+                    <div class="relative">
+                        <img src="https://picsum.photos/600/400?random=6" alt="Villa vue mer à Marcory" class="w-full h-48 object-cover">
+                        <div class="absolute top-4 right-4 bg-primary text-white px-3 py-1 rounded-full text-sm font-medium">À louer</div>
+                        <div class="absolute bottom-4 left-4 bg-white text-secondary px-3 py-1 rounded-full text-sm font-medium border border-gray-300">750 000 FCFA/mois</div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-lg font-bold mb-2 text-secondary">Villa vue mer à Marcory</h3>
+                        <div class="flex items-center text-gray-600 mb-3">
+                            <i class="fas fa-map-marker-alt mr-2 text-primary"></i>
+                            <span>Marcory, Abidjan</span>
+                        </div>
+                        <a href="property-detail.html?id=2" class="text-primary hover:underline font-medium hidden">Voir les détails</a>
+                    </div>
+                </div>
+
+                <!-- Similar Property 2 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition border border-gray-200">
+                    <div class="relative">
+                        <img src="https://picsum.photos/600/400?random=7" alt="Appartement T2 à Yamoussoukro" class="w-full h-48 object-cover">
+                        <div class="absolute top-4 right-4 bg-primary text-white px-3 py-1 rounded-full text-sm font-medium">À louer</div>
+                        <div class="absolute bottom-4 left-4 bg-white text-secondary px-3 py-1 rounded-full text-sm font-medium border border-gray-300">300 000 FCFA/mois</div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-lg font-bold mb-2 text-secondary">Appartement T2 à Yamoussoukro</h3>
+                        <div class="flex items-center text-gray-600 mb-3">
+                            <i class="fas fa-map-marker-alt mr-2 text-primary"></i>
+                            <span>Yamoussoukro</span>
+                        </div>
+                        <a href="property-detail.html?id=4" class="text-primary hover:underline font-medium hidden">Voir les détails</a>
+                    </div>
+                </div>
+
+                <!-- Similar Property 3 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition border border-gray-200">
+                    <div class="relative">
+                        <img src="https://picsum.photos/600/400?random=8" alt="Bureau sécurisé à Plateau" class="w-full h-48 object-cover">
+                        <div class="absolute top-4 right-4 bg-primary text-white px-3 py-1 rounded-full text-sm font-medium">À louer</div>
+                        <div class="absolute bottom-4 left-4 bg-white text-secondary px-3 py-1 rounded-full text-sm font-medium border border-gray-300">1 000 000 FCFA/mois</div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-lg font-bold mb-2 text-secondary">Bureau sécurisé à Plateau</h3>
+                        <div class="flex items-center text-gray-600 mb-3">
+                            <i class="fas fa-map-marker-alt mr-2 text-primary"></i>
+                            <span>Plateau, Abidjan</span>
+                        </div>
+                        <a href="property-detail.html?id=3" class="text-primary hover:underline font-medium hidden">Voir les détails</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-secondary text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">SIAH SCI</h3>
+                    <p class="text-gray-300">Leader de la location-acquisition en Côte d'Ivoire, nous facilitons l'accès à la propriété pour tous.</p>
+                </div>
+
+                <div>
+                    <h4 class="font-bold mb-4">Liens rapides</h4>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-300 hover:text-white">Accueil</a></li>
+                        <li><a href="about.html" class="text-gray-300 hover:text-white">À propos</a></li>
+                        <li><a href="services.html" class="text-gray-300 hover:text-white">Nos services</a></li>
+                        <li><a href="properties.html" class="text-gray-300 hover:text-white">Biens en location</a></li>
+                        <li><a href="contact.html" class="text-gray-300 hover:text-white">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-bold mb-4">Villes</h4>
+                    <ul class="space-y-2">
+                        <li><a href="properties.html?ville=abidjan" class="text-gray-300 hover:text-white">Abidjan</a></li>
+                        <li><a href="properties.html?ville=yamoussoukro" class="text-gray-300 hover:text-white">Yamoussoukro</a></li>
+                        <li><a href="properties.html?ville=bouake" class="text-gray-300 hover:text-white">Bouaké</a></li>
+                        <li><a href="properties.html?ville=sanpedro" class="text-gray-300 hover:text-white">San Pedro</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-bold mb-4">Newsletter</h4>
+                    <p class="text-gray-300 mb-4">Abonnez-vous pour recevoir nos dernières offres.</p>
+                    <form class="flex">
+                        <input type="email" placeholder="Votre email" class="flex-grow p-2 rounded-l-md text-secondary">
+                        <button type="submit" class="bg-primary text-white px-4 rounded-r-md"><i class="fas fa-paper-plane"></i></button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-300">
+                <p>&copy; 2023 SIAH SCI. Tous droits réservés. | <a href="legal.html" class="hover:text-white">Mentions légales</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+    </script>
+</body>
+</html>
